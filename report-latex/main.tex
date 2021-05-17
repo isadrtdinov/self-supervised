@@ -1,0 +1,138 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage[justification=centering,font={small,stretch=1.5}]{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{listings, lstautogobble}
+\usepackage[colorlinks,linkcolor=black,urlcolor=black]{hyperref}
+\usepackage{indentfirst}
+\usepackage[bibstyle=gost-numeric,citestyle=gost-numeric,hyperref, sorting=nyt]{biblatex}
+\usepackage{chngcntr}
+\usepackage{xcolor}
+
+\newcommand*{\FormatDigit}[1]{\textcolor{blue}{#1}}
+\definecolor{codegray}{rgb}{0.25,0.25,0.25}
+\definecolor{backcolour}{rgb}{0.96,0.96,0.96}
+
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    columns=fullflexible,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,                    
+    numbersep=2pt,
+    tabsize=2,
+    autogobble=true,
+    literate={0}{{\FormatDigit{0}}}{1}
+             {1}{{\FormatDigit{1}}}{1}
+             {2}{{\FormatDigit{2}}}{1}
+             {3}{{\FormatDigit{3}}}{1}
+             {4}{{\FormatDigit{4}}}{1}
+             {5}{{\FormatDigit{5}}}{1}
+             {6}{{\FormatDigit{6}}}{1}
+             {7}{{\FormatDigit{7}}}{1}
+             {8}{{\FormatDigit{8}}}{1}
+             {9}{{\FormatDigit{9}}}{1}
+             {.0}{{\FormatDigit{.0}}}{2}
+             {.1}{{\FormatDigit{.1}}}{2}
+             {.2}{{\FormatDigit{.2}}}{2}
+             {.3}{{\FormatDigit{.3}}}{2}
+             {.4}{{\FormatDigit{.4}}}{2}
+             {.5}{{\FormatDigit{.5}}}{2}
+             {.6}{{\FormatDigit{.6}}}{2}
+             {.7}{{\FormatDigit{.7}}}{2}
+             {.8}{{\FormatDigit{.8}}}{2}
+             {.9}{{\FormatDigit{.9}}}{2}
+}
+
+\lstset{style=codestyle}
+
+\counterwithin{figure}{section}
+\counterwithin{equation}{section}
+\counterwithin{table}{section}
+
+\geometry{left=2.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1.5cm}  % верхнее поле
+\geometry{bottom=1.5cm}  % нижнее поле
+\renewcommand{\baselinestretch}{1.5}  % междустрочный интервал
+
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{\arabic{enumi}}
+\renewcommand{\theenumii}{.\arabic{enumii}}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
+\renewcommand{\theenumiii}{.\arabic{enumiii}} 
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
+\addbibresource{bibliography.bib}
+
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\begin{document}
+
+\input{title}
+
+\addtocounter{page}{1}
+\newpage
+\tableofcontents
+
+\newpage
+\input{abstract}
+
+\newpage
+\section{Введение}
+\input{introduction}
+
+\section{Обзор литературы}
+\input{literature}
+
+\section{Описание метода SimCLR}
+\label{simclr:1}
+\input{simclr}
+
+\section{Эксперименты}
+\input{experiments}
+
+\section{Визуализации}
+\input{visual}
+
+\section{Заключение}
+\input{conclusion}
+
+\newpage
+\section*{Список литературы} 
+\addcontentsline{toc}{section}{Список литературы}
+\printbibliography[heading=none]
+
+\newpage
+\input{appendix}
+
+\end{document}
